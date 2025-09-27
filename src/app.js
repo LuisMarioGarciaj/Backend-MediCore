@@ -15,22 +15,22 @@ const app = express();
 // Middlewares
 // app.use(cors());
 app.use(cors({
-  origin: [
-    "http://localhost:5173",                    // Desarrollo local
-    "https://medicore-frontend.vercel.app",     // Futuro dominio en Vercel
-    "https://*.vercel.app"                      // Subdominios de Vercel
-  ],
-  credentials: true
+    origin: [
+        "http://localhost:5173",                    // Desarrollo local
+        "https://fronted-medicore.vercel.app",    // Futuro dominio en Vercel
+        "https://*.vercel.app"                      // Subdominios de Vercel
+    ],
+    credentials: true
 }));
 app.use(express.json());
 app.use(morgan("dev"));
 // Ruta de health check para Render
 app.get("/api/health", (req, res) => {
-  res.status(200).json({ 
-    status: "OK", 
-    message: "Backend MediCore funcionando",
-    timestamp: new Date().toISOString()
-  });
+    res.status(200).json({
+        status: "OK",
+        message: "Backend MediCore funcionando",
+        timestamp: new Date().toISOString()
+    });
 });
 // Rutas
 app.use("/api/auth", authRoutes);
